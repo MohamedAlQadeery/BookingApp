@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "mIZNG5NKKnhJtCwX3C6gTlhCE1nHqcBWldK8MIeAS90mVB1kRMdQ/5InZQcFDt2qeOB2mZD1lycMo+FSEfyqOQ==",
+  "success": true,
+  "projectFilePath": "D:\\My C# Journey\\Asp.net core\\Booking App\\BookingApp\\BookingApp.Api\\BookingApp.Api.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Apple Tech\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\Apple Tech\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\Apple Tech\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\Apple Tech\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\Apple Tech\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\Apple Tech\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}

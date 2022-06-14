@@ -25,3 +25,5 @@ D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Api\obj\Debug\ne
 D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Api\obj\Debug\net6.0\BookingApp.Api.pdb
 D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Api\obj\Debug\net6.0\BookingApp.Api.genruntimeconfig.cache
 D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Api\obj\Debug\net6.0\ref\BookingApp.Api.dll
+D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Api\bin\Debug\net6.0\BookingApp.Domain.dll
+D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Api\bin\Debug\net6.0\BookingApp.Domain.pdb

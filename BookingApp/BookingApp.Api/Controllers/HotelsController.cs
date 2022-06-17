@@ -1,4 +1,5 @@
-﻿using BookingApp.Domain.Models;
+﻿using BookingApp.Api.Services;
+using BookingApp.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookingApp.Api.Controllers
@@ -8,24 +9,28 @@ namespace BookingApp.Api.Controllers
     [Route("api/[controller]")]
     public class HotelsController : Controller
     {
-        private readonly DataSource _data;
+        private readonly MyFirstServices _myFirstService;
+        private readonly HttpContext? _httpContext;
 
-        public HotelsController(DataSource dataSource)
+        public HotelsController(MyFirstServices myFirstServices, IHttpContextAccessor httpContextAccessor)
         {
-            _data = dataSource;
+            _myFirstService = myFirstServices;
+            _httpContext = httpContextAccessor.HttpContext;
         }
 
         [HttpGet]
         public IActionResult GetHotels()
         {
-            return Ok(_data.Hotels);
+            _httpContext.Request.Headers.TryGetValue("datetime-middleware",out var header);
+            //return Ok(_myFirstService.GetHotels());
+            return Ok(header);
         }
 
 
         [HttpPost]
         public IActionResult CreateHotel([FromBody] Hotel hotel)
         {
-            _data.Hotels.Add(hotel);
+            _myFirstService.GetHotels().Add(hotel);
             return CreatedAtAction(nameof(GetHotelById), new { id = hotel.Id }, hotel);
         }
 
@@ -33,7 +38,7 @@ namespace BookingApp.Api.Controllers
         [HttpGet]
         public IActionResult GetHotelById(int id)
         {
-            var foundHotel = _data.Hotels.FirstOrDefault(hotel => hotel.Id == id);
+            var foundHotel = _myFirstService.GetHotels().FirstOrDefault(hotel => hotel.Id == id);
             if (foundHotel == null)
             {
                 return NotFound();
@@ -46,10 +51,10 @@ namespace BookingApp.Api.Controllers
         [HttpPut]
         public IActionResult UpdateHotel([FromBody] Hotel updatedHotel,int id)
         {
-            var foundHotel = _data.Hotels.FirstOrDefault(h => h.Id == id);
+            var foundHotel = _myFirstService.GetHotels().FirstOrDefault(h => h.Id == id);
             if (foundHotel == null) return NotFound();
-            _data.Hotels.Remove(foundHotel);
-            _data.Hotels.Add(updatedHotel);
+            _myFirstService.GetHotels().Remove(foundHotel);
+            _myFirstService.GetHotels().Add(updatedHotel);
 
             return NoContent();
         }
@@ -58,9 +63,9 @@ namespace BookingApp.Api.Controllers
         [HttpDelete]
         public IActionResult DeleteHotel(int id)
         {
-            var foundHotel = _data.Hotels.FirstOrDefault(h => h.Id == id);
+            var foundHotel = _myFirstService.GetHotels().FirstOrDefault(h => h.Id == id);
             if (foundHotel == null) return NotFound();
-            _data.Hotels.Remove(foundHotel);
+            _myFirstService.GetHotels().Remove(foundHotel);
 
             return NoContent();
 

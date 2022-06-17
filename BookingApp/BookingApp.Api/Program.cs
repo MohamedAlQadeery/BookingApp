@@ -1,4 +1,6 @@
-using BookingApp.Api;
+
+using BookingApp.Api.Middlewares;
+using BookingApp.Api.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<DataSource>();
+builder.Services.AddSingleton<MyFirstServices>();
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
@@ -22,7 +26,17 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+app.UseDateTimeHeader();
 
 app.MapControllers();
+
+
+//app.Use(async  (context,next) => {
+//      add code here for the request
+//      await next();
+//      here the code for the response 
+//});
+
+
 
 app.Run();

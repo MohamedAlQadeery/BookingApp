@@ -1,6 +1,6 @@
 ﻿using BookingApp.Domain.Models;
 
-namespace BookingApp.Api
+namespace BookingApp.Api.Services
 {
     public class DataSource
     {

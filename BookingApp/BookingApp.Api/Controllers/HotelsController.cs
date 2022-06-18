@@ -1,4 +1,6 @@
-﻿using BookingApp.Api.Services;
+﻿using AutoMapper;
+using BookingApp.Api.Dtos;
+using BookingApp.Api.Services;
 using BookingApp.Dal;
 using BookingApp.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -13,27 +15,30 @@ namespace BookingApp.Api.Controllers
     {
 
         private readonly DataContext _ctx;
-        public HotelsController(DataContext dataContext)
+        private readonly IMapper _mapper;
+        public HotelsController(DataContext dataContext,IMapper mapper)
         {
             _ctx = dataContext;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetHotels()
         {
             var hotels = await _ctx.Hotels.ToListAsync();
-            return Ok(hotels);
+            var getHotelsDto = _mapper.Map<List<GetHotelDto>>(hotels);
+            return Ok(getHotelsDto);
         }
 
 
         [HttpPost]
-        public async Task<IActionResult> CreateHotel([FromBody] Hotel hotel)
+        public async Task<IActionResult> CreateHotel([FromBody] CreateHotelDto hotel)
         {
-
-            _ctx.Hotels.Add(hotel);
+            var domainHotel = _mapper.Map<Hotel>(hotel);
+            _ctx.Hotels.Add(domainHotel);
             await _ctx.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetHotelById), new { id = hotel.Id }, hotel);
+            return CreatedAtAction(nameof(GetHotelById), new { id = domainHotel.Id }, domainHotel);
         }
 
         [Route("{id}")]
@@ -46,26 +51,22 @@ namespace BookingApp.Api.Controllers
             {
                 return NotFound();
             }
-            return Ok(hotel);
+
+            var getHotelDto = _mapper.Map<GetHotelDto>(hotel);
+            return Ok(getHotelDto);
            
         }
 
         [Route("{id}")]
         [HttpPut]
-        public async Task<IActionResult> UpdateHotel([FromBody] Hotel updatedHotel,int id)
+        public async Task<IActionResult> UpdateHotel([FromBody] CreateHotelDto updatedHotel,int id)
         {
-            var hotel = await _ctx.Hotels.FirstOrDefaultAsync(h => h.Id == id);
-            if(hotel == null)
-            {
-                return NotFound();
-            }
-            hotel.Name = updatedHotel.Name;
-            hotel.Stars = updatedHotel.Stars;
-            hotel.Description = updatedHotel.Description;
+            var toUpdate = _mapper.Map<Hotel>(updatedHotel);
+            toUpdate.Id = id;
 
-            _ctx.Hotels.Update(hotel);
-
+            _ctx.Hotels.Update(toUpdate);
             await _ctx.SaveChangesAsync();
+
             return NoContent();
         }
 

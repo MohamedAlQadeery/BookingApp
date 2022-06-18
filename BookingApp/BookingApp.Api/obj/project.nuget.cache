@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "ijZwulapgB80dO5NUHBEP69AVo/szfBPOR1qgHKGm/IvHnRwysBKw/XfA2zOtuhiCbKs8kxMe6v4ZxhETJwQfg==",
+  "dgSpecHash": "hu9bXZBpybPVFX4rjGe/OxXdOH/9bWk8/1pw3B5H+5rpfbbwi/WSB0dgtvkBp1SRRl8GRp926ZP+S4VnMMawbg==",
   "success": true,
   "projectFilePath": "D:\\My C# Journey\\Asp.net core\\Booking App\\BookingApp\\BookingApp.Api\\BookingApp.Api.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Apple Tech\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
+    "C:\\Users\\Apple Tech\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "C:\\Users\\Apple Tech\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
-    "C:\\Users\\Apple Tech\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\Apple Tech\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\Apple Tech\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\Apple Tech\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
     "C:\\Users\\Apple Tech\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.6\\microsoft.entityframeworkcore.6.0.6.nupkg.sha512",

@@ -16,8 +16,11 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<DataSource>();
 builder.Services.AddSingleton<MyFirstServices>();
 builder.Services.AddHttpContextAccessor();
+
 var connectionString = builder.Configuration.GetConnectionString("Default");
 builder.Services.AddDbContext<DataContext>(options => { options.UseSqlServer(connectionString); });
+builder.Services.AddAutoMapper(typeof(Program));
+
 
 var app = builder.Build();
 

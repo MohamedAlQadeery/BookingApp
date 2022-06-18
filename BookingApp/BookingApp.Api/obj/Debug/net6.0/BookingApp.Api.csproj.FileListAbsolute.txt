@@ -63,3 +63,5 @@ D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Api\bin\Debug\ne
 D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Api\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Api\bin\Debug\net6.0\BookingApp.Dal.dll
 D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Api\bin\Debug\net6.0\BookingApp.Dal.pdb
+D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Api\bin\Debug\net6.0\AutoMapper.dll
+D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Api\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

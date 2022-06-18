@@ -706,6 +706,21 @@
           }
         }
       },
+      "BookingApp.Dal/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "dependencies": {
+          "BookingApp.Domain": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "6.0.6",
+          "Microsoft.EntityFrameworkCore.SqlServer": "6.0.6"
+        },
+        "compile": {
+          "bin/placeholder/BookingApp.Dal.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BookingApp.Dal.dll": {}
+        }
+      },
       "BookingApp.Domain/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
@@ -2061,6 +2076,11 @@
         "version.txt"
       ]
     },
+    "BookingApp.Dal/1.0.0": {
+      "type": "project",
+      "path": "../BookingApp.Dal/BookingApp.Dal.csproj",
+      "msbuildProject": "../BookingApp.Dal/BookingApp.Dal.csproj"
+    },
     "BookingApp.Domain/1.0.0": {
       "type": "project",
       "path": "../BookingApp.Domain/BookingApp.Domain.csproj",
@@ -2069,6 +2089,7 @@
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "BookingApp.Dal >= 1.0.0",
       "BookingApp.Domain >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 6.0.6",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.6",
@@ -2108,6 +2129,9 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
+            "D:\\My C# Journey\\Asp.net core\\Booking App\\BookingApp\\BookingApp.Dal\\BookingApp.Dal.csproj": {
+              "projectPath": "D:\\My C# Journey\\Asp.net core\\Booking App\\BookingApp\\BookingApp.Dal\\BookingApp.Dal.csproj"
+            },
             "D:\\My C# Journey\\Asp.net core\\Booking App\\BookingApp\\BookingApp.Domain\\BookingApp.Domain.csproj": {
               "projectPath": "D:\\My C# Journey\\Asp.net core\\Booking App\\BookingApp\\BookingApp.Domain\\BookingApp.Domain.csproj"
             }

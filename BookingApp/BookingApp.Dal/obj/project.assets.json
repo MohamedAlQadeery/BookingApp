@@ -634,6 +634,16 @@
             "rid": "win"
           }
         }
+      },
+      "BookingApp.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/BookingApp.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/BookingApp.Domain.dll": {}
+        }
       }
     }
   },
@@ -1854,10 +1864,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "BookingApp.Domain/1.0.0": {
+      "type": "project",
+      "path": "../BookingApp.Domain/BookingApp.Domain.csproj",
+      "msbuildProject": "../BookingApp.Domain/BookingApp.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "BookingApp.Domain >= 1.0.0",
       "Microsoft.EntityFrameworkCore >= 6.0.6",
       "Microsoft.EntityFrameworkCore.SqlServer >= 6.0.6",
       "Microsoft.EntityFrameworkCore.Tools >= 6.0.6"
@@ -1894,7 +1910,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\My C# Journey\\Asp.net core\\Booking App\\BookingApp\\BookingApp.Domain\\BookingApp.Domain.csproj": {
+              "projectPath": "D:\\My C# Journey\\Asp.net core\\Booking App\\BookingApp\\BookingApp.Domain\\BookingApp.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -1,6 +1,8 @@
 
 using BookingApp.Api.Middlewares;
 using BookingApp.Api.Services;
+using BookingApp.Dal;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,9 +12,12 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 builder.Services.AddSingleton<DataSource>();
 builder.Services.AddSingleton<MyFirstServices>();
 builder.Services.AddHttpContextAccessor();
+var connectionString = builder.Configuration.GetConnectionString("Default");
+builder.Services.AddDbContext<DataContext>(options => { options.UseSqlServer(connectionString); });
 
 var app = builder.Build();
 

@@ -1,0 +1,17 @@
+D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Dal\bin\Debug\net6.0\BookingApp.Dal.deps.json
+D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Dal\bin\Debug\net6.0\BookingApp.Dal.runtimeconfig.json
+D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Dal\bin\Debug\net6.0\BookingApp.Dal.dll
+D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Dal\bin\Debug\net6.0\BookingApp.Dal.pdb
+D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Dal\bin\Debug\net6.0\BookingApp.Domain.dll
+D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Dal\bin\Debug\net6.0\BookingApp.Domain.pdb
+D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Dal\obj\Debug\net6.0\BookingApp.Dal.csproj.AssemblyReference.cache
+D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Dal\obj\Debug\net6.0\BookingApp.Dal.GeneratedMSBuildEditorConfig.editorconfig
+D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Dal\obj\Debug\net6.0\BookingApp.Dal.AssemblyInfoInputs.cache
+D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Dal\obj\Debug\net6.0\BookingApp.Dal.AssemblyInfo.cs
+D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Dal\obj\Debug\net6.0\BookingApp.Dal.csproj.CoreCompileInputs.cache
+D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Dal\obj\Debug\net6.0\BookingApp.Dal.csproj.CopyComplete
+D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Dal\obj\Debug\net6.0\BookingApp.Dal.dll
+D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Dal\obj\Debug\net6.0\refint\BookingApp.Dal.dll
+D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Dal\obj\Debug\net6.0\BookingApp.Dal.pdb
+D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Dal\obj\Debug\net6.0\BookingApp.Dal.genruntimeconfig.cache
+D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Dal\obj\Debug\net6.0\ref\BookingApp.Dal.dll

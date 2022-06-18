@@ -1,6 +1,8 @@
 ﻿using BookingApp.Api.Services;
+using BookingApp.Dal;
 using BookingApp.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BookingApp.Api.Controllers
 {
@@ -9,64 +11,76 @@ namespace BookingApp.Api.Controllers
     [Route("api/[controller]")]
     public class HotelsController : Controller
     {
-        private readonly MyFirstServices _myFirstService;
-        private readonly HttpContext? _httpContext;
 
-        public HotelsController(MyFirstServices myFirstServices, IHttpContextAccessor httpContextAccessor)
+        private readonly DataContext _ctx;
+        public HotelsController(DataContext dataContext)
         {
-            _myFirstService = myFirstServices;
-            _httpContext = httpContextAccessor.HttpContext;
+            _ctx = dataContext;
         }
 
         [HttpGet]
-        public IActionResult GetHotels()
+        public async Task<IActionResult> GetHotels()
         {
-            _httpContext.Request.Headers.TryGetValue("datetime-middleware",out var header);
-            //return Ok(_myFirstService.GetHotels());
-            return Ok(header);
+            var hotels = await _ctx.Hotels.ToListAsync();
+            return Ok(hotels);
         }
 
 
         [HttpPost]
-        public IActionResult CreateHotel([FromBody] Hotel hotel)
+        public async Task<IActionResult> CreateHotel([FromBody] Hotel hotel)
         {
-            _myFirstService.GetHotels().Add(hotel);
+
+            _ctx.Hotels.Add(hotel);
+            await _ctx.SaveChangesAsync();
+
             return CreatedAtAction(nameof(GetHotelById), new { id = hotel.Id }, hotel);
         }
 
         [Route("{id}")]
         [HttpGet]
-        public IActionResult GetHotelById(int id)
+        public async Task<IActionResult> GetHotelById(int id)
         {
-            var foundHotel = _myFirstService.GetHotels().FirstOrDefault(hotel => hotel.Id == id);
-            if (foundHotel == null)
+
+            var hotel = await _ctx.Hotels.FirstOrDefaultAsync(h => h.Id == id);
+            if(hotel == null)
             {
                 return NotFound();
             }
-
-            return Ok(foundHotel);
+            return Ok(hotel);
+           
         }
 
         [Route("{id}")]
         [HttpPut]
-        public IActionResult UpdateHotel([FromBody] Hotel updatedHotel,int id)
+        public async Task<IActionResult> UpdateHotel([FromBody] Hotel updatedHotel,int id)
         {
-            var foundHotel = _myFirstService.GetHotels().FirstOrDefault(h => h.Id == id);
-            if (foundHotel == null) return NotFound();
-            _myFirstService.GetHotels().Remove(foundHotel);
-            _myFirstService.GetHotels().Add(updatedHotel);
+            var hotel = await _ctx.Hotels.FirstOrDefaultAsync(h => h.Id == id);
+            if(hotel == null)
+            {
+                return NotFound();
+            }
+            hotel.Name = updatedHotel.Name;
+            hotel.Stars = updatedHotel.Stars;
+            hotel.Description = updatedHotel.Description;
 
+            _ctx.Hotels.Update(hotel);
+
+            await _ctx.SaveChangesAsync();
             return NoContent();
         }
 
         [Route("{id}")]
         [HttpDelete]
-        public IActionResult DeleteHotel(int id)
+        public async Task<IActionResult> DeleteHotel(int id)
         {
-            var foundHotel = _myFirstService.GetHotels().FirstOrDefault(h => h.Id == id);
-            if (foundHotel == null) return NotFound();
-            _myFirstService.GetHotels().Remove(foundHotel);
 
+            var hotel = await _ctx.Hotels.FirstOrDefaultAsync(h => h.Id == id);
+           if(hotel == null)
+            {
+                return NotFound();
+            }
+            _ctx.Hotels.Remove(hotel);
+            await _ctx.SaveChangesAsync();
             return NoContent();
 
 

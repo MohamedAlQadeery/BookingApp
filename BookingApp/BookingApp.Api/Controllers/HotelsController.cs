@@ -38,7 +38,7 @@ namespace BookingApp.Api.Controllers
             _ctx.Hotels.Add(domainHotel);
             await _ctx.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetHotelById), new { id = domainHotel.Id }, domainHotel);
+            return CreatedAtAction(nameof(GetHotelById), new { id = domainHotel.HotelId }, domainHotel);
         }
 
         [Route("{id}")]
@@ -46,7 +46,7 @@ namespace BookingApp.Api.Controllers
         public async Task<IActionResult> GetHotelById(int id)
         {
 
-            var hotel = await _ctx.Hotels.FirstOrDefaultAsync(h => h.Id == id);
+            var hotel = await _ctx.Hotels.FirstOrDefaultAsync(h => h.HotelId == id);
             if(hotel == null)
             {
                 return NotFound();
@@ -62,7 +62,7 @@ namespace BookingApp.Api.Controllers
         public async Task<IActionResult> UpdateHotel([FromBody] CreateHotelDto updatedHotel,int id)
         {
             var toUpdate = _mapper.Map<Hotel>(updatedHotel);
-            toUpdate.Id = id;
+            toUpdate.HotelId = id;
 
             _ctx.Hotels.Update(toUpdate);
             await _ctx.SaveChangesAsync();
@@ -75,7 +75,7 @@ namespace BookingApp.Api.Controllers
         public async Task<IActionResult> DeleteHotel(int id)
         {
 
-            var hotel = await _ctx.Hotels.FirstOrDefaultAsync(h => h.Id == id);
+            var hotel = await _ctx.Hotels.FirstOrDefaultAsync(h => h.HotelId == id);
            if(hotel == null)
             {
                 return NotFound();

@@ -8,7 +8,7 @@ namespace BookingApp.Domain.Models
 {
     public class Reservation
     {
-        public int Id { get; set; }
+        public int ReservationId { get; set; }
 
         public Room? room { get; set; }
 

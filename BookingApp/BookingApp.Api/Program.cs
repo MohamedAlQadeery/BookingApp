@@ -2,6 +2,8 @@
 using BookingApp.Api.Middlewares;
 using BookingApp.Api.Services;
 using BookingApp.Dal;
+using BookingApp.Dal.Repositories;
+using BookingApp.Domain.Abstraction.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +22,7 @@ builder.Services.AddHttpContextAccessor();
 var connectionString = builder.Configuration.GetConnectionString("Default");
 builder.Services.AddDbContext<DataContext>(options => { options.UseSqlServer(connectionString); });
 builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddScoped<IHotelsRepository,HotelRepository>();
 
 
 var app = builder.Build();

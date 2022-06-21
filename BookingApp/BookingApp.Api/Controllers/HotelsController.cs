@@ -2,6 +2,7 @@
 using BookingApp.Api.Dtos;
 using BookingApp.Api.Services;
 using BookingApp.Dal;
+using BookingApp.Domain.Abstraction.Repositories;
 using BookingApp.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -13,19 +14,20 @@ namespace BookingApp.Api.Controllers
     [Route("api/[controller]")]
     public class HotelsController : Controller
     {
-
-        private readonly DataContext _ctx;
+        private readonly IHotelsRepository _hotelRepo;
+      
         private readonly IMapper _mapper;
-        public HotelsController(DataContext dataContext, IMapper mapper)
+        public HotelsController(IMapper mapper, IHotelsRepository hotelRepo)
         {
-            _ctx = dataContext;
             _mapper = mapper;
+            _hotelRepo = hotelRepo;
+
         }
 
         [HttpGet]
         public async Task<IActionResult> GetHotels()
         {
-            var hotels = await _ctx.Hotels.ToListAsync();
+            var hotels = await _hotelRepo.GetAllHotelsAsync();
             var getHotelsDto = _mapper.Map<List<GetHotelDto>>(hotels);
             return Ok(getHotelsDto);
         }
@@ -35,8 +37,7 @@ namespace BookingApp.Api.Controllers
         public async Task<IActionResult> CreateHotel([FromBody] CreateHotelDto hotel)
         {
             var domainHotel = _mapper.Map<Hotel>(hotel);
-            _ctx.Hotels.Add(domainHotel);
-            await _ctx.SaveChangesAsync();
+            await _hotelRepo.CreateHotelAsync(domainHotel);
 
             return CreatedAtAction(nameof(GetHotelById), new { id = domainHotel.HotelId }, domainHotel);
         }
@@ -46,7 +47,7 @@ namespace BookingApp.Api.Controllers
         public async Task<IActionResult> GetHotelById(int id)
         {
 
-            var hotel = await _ctx.Hotels.FirstOrDefaultAsync(h => h.HotelId == id);
+            var hotel = await _hotelRepo.GetHotelByIdAsync(id);
             if (hotel == null)
             {
                 return NotFound();
@@ -63,9 +64,8 @@ namespace BookingApp.Api.Controllers
         {
             var toUpdate = _mapper.Map<Hotel>(updatedHotel);
             toUpdate.HotelId = id;
-
-            _ctx.Hotels.Update(toUpdate);
-            await _ctx.SaveChangesAsync();
+            await _hotelRepo.UpdateHotelAsync(toUpdate);
+           
 
             return NoContent();
         }
@@ -75,13 +75,12 @@ namespace BookingApp.Api.Controllers
         public async Task<IActionResult> DeleteHotel(int id)
         {
 
-            var hotel = await _ctx.Hotels.FirstOrDefaultAsync(h => h.HotelId == id);
+            var hotel = await _hotelRepo.DeleteHotelByIdAsync(id);
             if (hotel == null)
             {
                 return NotFound();
             }
-            _ctx.Hotels.Remove(hotel);
-            await _ctx.SaveChangesAsync();
+           
             return NoContent();
 
 
@@ -91,7 +90,7 @@ namespace BookingApp.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetHotelRooms(int hotelId)
         {
-            var domainRooms = await _ctx.Rooms.Where(r => r.HotelId == hotelId).ToListAsync();
+            var domainRooms = await _hotelRepo.GetHotelRoomsAsync(hotelId);
 
             var getRooms = _mapper.Map<List<GetRoomDto>>(domainRooms);
 
@@ -103,10 +102,8 @@ namespace BookingApp.Api.Controllers
         public async Task<IActionResult> AddHotelRoom(int hotelId,[FromBody] PostPutRoomDto room)
         {
             var domainRoom = _mapper.Map<Room>(room);
-            domainRoom.HotelId = hotelId;
-            _ctx.Rooms.Add(domainRoom);
-            await _ctx.SaveChangesAsync();
-
+           await _hotelRepo.AddHotelRoomAsync(hotelId,domainRoom);
+                
             var getRoomDto = _mapper.Map<GetRoomDto>(domainRoom);
             return CreatedAtAction(nameof(GetHotelRoomById), new { hotelId = hotelId, roomId = getRoomDto.RoomId }, getRoomDto);
         }
@@ -115,7 +112,7 @@ namespace BookingApp.Api.Controllers
         [HttpGet]
         public async Task<IActionResult> GetHotelRoomById(int hotelId,int roomId)
         {
-            var room = await _ctx.Rooms.FirstOrDefaultAsync(r => r.HotelId == hotelId && r.RoomId == roomId);
+            var room = await _hotelRepo.GetHotelRoomByIdAsync(hotelId, roomId);
             
             if(room == null)
             {
@@ -131,11 +128,8 @@ namespace BookingApp.Api.Controllers
         public async Task<IActionResult> UpdateHotelRoomById(int hotelId , int roomId,[FromBody] PostPutRoomDto updatedRoom)
         {
             var room = _mapper.Map<Room>(updatedRoom);
-            room.HotelId = hotelId;
             room.RoomId = roomId;
-
-            _ctx.Rooms.Update(room);
-            await _ctx.SaveChangesAsync();
+            await _hotelRepo.UpdateHotelRoomAsync(hotelId, room);
             return NoContent();
         }
 
@@ -144,14 +138,15 @@ namespace BookingApp.Api.Controllers
         [HttpDelete]
         public async Task<IActionResult> DeleteHotelRoomById(int hotelId,int roomId)
         {
-            var room = await _ctx.Rooms.FirstOrDefaultAsync(r => r.HotelId == hotelId && r.RoomId == roomId);
+            var room = await _hotelRepo.DeleteHotelRoomAsync(hotelId, roomId);
             if(room == null)
             {
                 return NotFound("Room not found");
             }
-            _ctx.Rooms.Remove(room);
-            await _ctx.SaveChangesAsync();
+          
             return NoContent();
         }
     }
 }
+
+

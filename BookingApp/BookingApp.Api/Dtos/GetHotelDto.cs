@@ -1,4 +1,6 @@
-﻿namespace BookingApp.Api.Dtos
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BookingApp.Api.Dtos
 {
     public class GetHotelDto
     {
@@ -6,7 +8,6 @@
         public string? Name { get; set; }
 
         public int Stars { get; set; }
-
         public string? Address { get; set; }
 
         public string? City { get; set; }

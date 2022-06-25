@@ -11,6 +11,7 @@
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "11.0.0",
           "BookingApp.Dal": "1.0.0",
           "BookingApp.Domain": "1.0.0",
+          "BookingApp.Services": "1.0.0",
           "Microsoft.EntityFrameworkCore": "6.0.6",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.6",
           "Microsoft.EntityFrameworkCore.Tools": "6.0.6",
@@ -521,6 +522,15 @@
         "runtime": {
           "BookingApp.Domain.dll": {}
         }
+      },
+      "BookingApp.Services/1.0.0": {
+        "dependencies": {
+          "BookingApp.Dal": "1.0.0",
+          "BookingApp.Domain": "1.0.0"
+        },
+        "runtime": {
+          "BookingApp.Services.dll": {}
+        }
       }
     }
   },
@@ -893,6 +903,11 @@
       "sha512": ""
     },
     "BookingApp.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BookingApp.Services/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

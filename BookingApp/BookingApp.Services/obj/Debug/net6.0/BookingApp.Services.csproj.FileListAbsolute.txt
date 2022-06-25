@@ -10,3 +10,8 @@ D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Services\obj\Deb
 D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Services\obj\Debug\net6.0\refint\BookingApp.Services.dll
 D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Services\obj\Debug\net6.0\BookingApp.Services.pdb
 D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Services\obj\Debug\net6.0\ref\BookingApp.Services.dll
+D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Services\bin\Debug\net6.0\BookingApp.Dal.dll
+D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Services\bin\Debug\net6.0\BookingApp.Domain.dll
+D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Services\bin\Debug\net6.0\BookingApp.Dal.pdb
+D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Services\bin\Debug\net6.0\BookingApp.Domain.pdb
+D:\My C# Journey\Asp.net core\Booking App\BookingApp\BookingApp.Services\obj\Debug\net6.0\BookingApp.Services.csproj.CopyComplete

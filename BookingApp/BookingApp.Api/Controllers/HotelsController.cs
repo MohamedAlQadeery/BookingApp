@@ -38,8 +38,8 @@ namespace BookingApp.Api.Controllers
         {
             var domainHotel = _mapper.Map<Hotel>(hotel);
             await _hotelRepo.CreateHotelAsync(domainHotel);
-
-            return CreatedAtAction(nameof(GetHotelById), new { id = domainHotel.HotelId }, domainHotel);
+            var getHotel = _mapper.Map<GetHotelDto>(domainHotel);
+            return CreatedAtAction(nameof(GetHotelById), new { id = domainHotel.HotelId }, getHotel);
         }
 
         [Route("{id}")]

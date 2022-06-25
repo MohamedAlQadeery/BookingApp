@@ -61,7 +61,7 @@ namespace BookingApp.Dal.Repositories
 
         public async Task<Hotel> GetHotelByIdAsync(int id)
         {
-            var hotel = await _ctx.Hotels.FirstOrDefaultAsync(h => h.HotelId == id);
+            var hotel = await _ctx.Hotels.Include(h => h.Rooms).FirstOrDefaultAsync(h => h.HotelId == id);
             if (hotel == null) return null;
             return hotel;
         }
